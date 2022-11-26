@@ -14,6 +14,7 @@ export default () =>
                 .title("Home")
                 .child(
                   S.documentList()
+                    .defaultOrdering([{ field: "order", direction: "asc" }])
                     .title("Home Features")
                     .filter('_type == "feature" && page == "home"')
                 ),
@@ -21,6 +22,7 @@ export default () =>
                 .title("About")
                 .child(
                   S.documentList()
+                    .defaultOrdering([{ field: "order", direction: "asc" }])
                     .title("About Features")
                     .filter('_type == "feature" && page == "about"')
                 ),
@@ -28,23 +30,75 @@ export default () =>
                 .title("Our Research")
                 .child(
                   S.documentList()
+                    .defaultOrdering([{ field: "order", direction: "asc" }])
                     .title("Our Research Features")
-                    .filter('_type == "feature" && page == "research"')
+                    .filter('_type == "feature" && page == "our-research"')
                 ),
               S.listItem()
                 .title("Resources & Equipment")
                 .child(
                   S.documentList()
+                    .defaultOrdering([{ field: "order", direction: "asc" }])
                     .title("Resources & Equipment Features")
                     .filter(
-                      '_type == "feature" && page == "resources_equipment"'
+                      '_type == "feature" && page == "resources-equipment"'
                     )
                 ),
             ])
         ),
-      S.divider(),
+      S.listItem()
+        .title("Cards")
+        .child(
+          S.list()
+            .title("Cards by Type")
+            .items([
+              S.listItem()
+                .title("Resource/Equipment")
+                .child(
+                  S.documentList()
+                    .defaultOrdering([{ field: "order", direction: "asc" }])
+                    .title("Resource/Equipment")
+                    .filter('_type == "card" && type == "equipment"')
+                ),
+              S.listItem()
+                .title("Roles")
+                .child(
+                  S.documentList()
+                    .defaultOrdering([{ field: "order", direction: "asc" }])
+                    .title("Roles")
+                    .filter('_type == "card" && type == "role"')
+                ),
+              S.listItem()
+                .title("Student/Collaborator")
+                .child(
+                  S.documentList()
+                    .defaultOrdering([{ field: "order", direction: "asc" }])
+                    .title("Student/Collaborator")
+                    .filter('_type == "card" && type == "sc"')
+                ),
+              S.listItem()
+                .title("Student Roles")
+                .child(
+                  S.documentList()
+                    .defaultOrdering([{ field: "order", direction: "asc" }])
+                    .title("Student Roles")
+                    .filter('_type == "card" && type == "sRole"')
+                ),
+            ])
+        ),
+      S.listItem()
+        .title("Research Docs")
+        .child(
+          S.documentList()
+            .defaultOrdering([{ field: "order", direction: "asc" }])
+            .title("Research Docs")
+            .filter('_type == "research_doc"')
+        ),
+
+      // S.divider(),
       // The rest of this document is from the original manual grouping in this series of articles
       ...S.documentTypeListItems().filter(
-        (listItem) => !["feature"].includes(listItem.getId())
+        (listItem) =>
+          !["feature", "card", "research_doc"].includes(listItem.getId())
       ),
     ]);
