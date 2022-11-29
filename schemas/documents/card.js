@@ -13,7 +13,30 @@ export default {
       title: "Description",
       name: "desc",
       type: "array",
-      of: [{ type: "block" }],
+      of: [
+        {
+          type: "block",
+          marks: {
+            annotations: [
+              {
+                name: "internalLink",
+                type: "object",
+                title: "Internal link",
+                blockEditor: {
+                  icon: () => "FILE",
+                },
+                fields: [
+                  {
+                    name: "Doc",
+                    type: "reference",
+                    to: [{ type: "research_doc" }],
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      ],
       validation: (Rule) => Rule.required(),
     },
     {

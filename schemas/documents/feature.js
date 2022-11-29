@@ -36,7 +36,7 @@ export default {
                 },
                 fields: [
                   {
-                    name: "item",
+                    name: "doc",
                     type: "reference",
                     to: [
                       { type: "research_doc" },
