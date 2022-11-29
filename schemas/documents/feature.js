@@ -84,6 +84,8 @@ export default {
       name: "video",
       type: "url",
       title: "Video",
+      description:
+        "Must include the embedded URL/Link to the video, not just the regular URL",
       validation: (rule) =>
         rule.custom((currentValue, { document }) => {
           // in a custom validation rule, check if the field should be shown, and if yes, show an error if the value is not set
@@ -145,6 +147,7 @@ export default {
     {
       title: "Pages",
       name: "page",
+      description: "Determines the page the feature will be displayed on",
       type: "string",
       validation: (Rule) => Rule.required(),
       options: {

@@ -65,6 +65,7 @@ export default {
       title: "Type",
       name: "type",
       type: "string",
+      description: "Type determines which page the card will be displayed on",
       validation: (Rule) => Rule.required(),
       options: {
         list: [
