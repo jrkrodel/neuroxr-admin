@@ -23,6 +23,12 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      name: "alt",
+      title: "Alt Text",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: "role",
       type: "string",
       title: "Role Type",

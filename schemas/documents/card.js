@@ -27,7 +27,7 @@ export default {
                 },
                 fields: [
                   {
-                    name: "Doc",
+                    name: "doc",
                     type: "reference",
                     to: [{ type: "research_doc" }],
                   },
@@ -43,6 +43,12 @@ export default {
       name: "image",
       type: "image",
       title: "Image",
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: "alt",
+      title: "Alt Text",
+      type: "string",
       validation: (Rule) => Rule.required(),
     },
     {

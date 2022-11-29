@@ -81,6 +81,24 @@ export default {
       },
     },
     {
+      name: "alt",
+      type: "string",
+      title: "Alt Text",
+      validation: (rule) =>
+        rule.custom((currentValue, { document }) => {
+          // in a custom validation rule, check if the field should be shown, and if yes, show an error if the value is not set
+          if (shouldShow(document) === "image" && currentValue === undefined)
+            return "Alt Text Required";
+          // if we are not showing the field, or if the field has a value
+          // then the validation passes
+          return true;
+        }),
+      hidden: ({ document }) => {
+        // use the shared function to decide whether to show the field
+        return !(shouldShow(document) === "image");
+      },
+    },
+    {
       name: "video",
       type: "url",
       title: "Video",
