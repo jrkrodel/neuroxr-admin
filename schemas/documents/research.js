@@ -26,6 +26,8 @@ export default {
       description:
         "If Featured is true, this document will display on the additional research list",
       type: "boolean",
+      validation: (Rule) => Rule.required(),
+      initalValue: false,
     },
     {
       name: "order",
@@ -45,12 +47,14 @@ export default {
     select: {
       title: "title",
       order: "order",
+      featured: "featured",
     },
     prepare(selection) {
-      const { title, order } = selection;
+      const { title, order, featured } = selection;
       return {
         title: title,
-        subtitle: "Display Order: " + order,
+        subtitle:
+          "Display Order: " + order + `${featured ? " - Featured" : ""}`,
       };
     },
   },

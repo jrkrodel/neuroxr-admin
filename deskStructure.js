@@ -61,22 +61,6 @@ export default () =>
                     .filter('_type == "card" && type == "equipment"')
                 ),
               S.listItem()
-                .title("Roles")
-                .child(
-                  S.documentList()
-                    .defaultOrdering([{ field: "order", direction: "asc" }])
-                    .title("Roles")
-                    .filter('_type == "card" && type == "role"')
-                ),
-              S.listItem()
-                .title("Student/Collaborator")
-                .child(
-                  S.documentList()
-                    .defaultOrdering([{ field: "order", direction: "asc" }])
-                    .title("Student/Collaborator")
-                    .filter('_type == "card" && type == "sc"')
-                ),
-              S.listItem()
                 .title("Student Roles")
                 .child(
                   S.documentList()

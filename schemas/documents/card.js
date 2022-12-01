@@ -99,8 +99,6 @@ export default {
       options: {
         list: [
           { title: "Resource or Equipment", value: "equipment" },
-          { title: "Role", value: "role" },
-          { title: "Student/Collaborator", value: "sc" },
           { title: "Student Roles", value: "sRole" },
         ],
       },
