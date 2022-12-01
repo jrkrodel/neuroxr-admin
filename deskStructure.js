@@ -94,11 +94,63 @@ export default () =>
             .title("Research Docs")
             .filter('_type == "research_doc"')
         ),
+      S.listItem()
+        .title("Profiles")
+        .child(
+          S.list()
+            .title("Profile Resources")
+            .items([
+              S.listItem()
+                .title("Profile Types")
+                .child(
+                  S.documentList()
+                    .defaultOrdering([{ field: "order", direction: "asc" }])
+                    .title("Profile Types")
+                    .filter('_type == "profile_type"')
+                ),
+              S.listItem()
+                .title("Profiles By Type")
+                .child(
+                  S.documentTypeList("profile_type")
+                    .title("Profiles by Type")
+                    .menuItems([
+                      S.orderingMenuItem({
+                        title: "Order ascending",
+                        by: [{ field: "order", direction: "asc" }],
+                      }),
+                      S.orderingMenuItem({
+                        title: "Order descending",
+                        by: [{ field: "order", direction: "desc" }],
+                      }),
+                      S.orderingMenuItem({
+                        title: "Title ascending",
+                        by: [{ field: "title", direction: "asc" }],
+                      }),
+                      S.orderingMenuItem({
+                        title: "Title descending",
+                        by: [{ field: "title", direction: "desc" }],
+                      }),
+                    ])
+                    .child((role) =>
+                      S.documentList()
+                        .defaultOrdering([{ field: "order", direction: "asc" }])
+                        .title("Profiles")
+                        .filter('_type == "profile" && $role == role._ref')
+                        .params({ role })
+                    )
+                ),
+            ])
+        ),
 
-      // S.divider(),
       // The rest of this document is from the original manual grouping in this series of articles
       ...S.documentTypeListItems().filter(
         (listItem) =>
-          !["feature", "card", "research_doc"].includes(listItem.getId())
+          ![
+            "feature",
+            "card",
+            "research_doc",
+            "profile",
+            "profile_type",
+          ].includes(listItem.getId())
       ),
     ]);

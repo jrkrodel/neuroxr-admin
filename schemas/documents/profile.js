@@ -30,16 +30,9 @@ export default {
     },
     {
       name: "role",
-      type: "string",
-      title: "Role Type",
-      options: {
-        list: [
-          { title: "Director", value: "directors" },
-          { title: "Research Operator", value: "researchOps" },
-          { title: "Developer", value: "developers" },
-          { title: "Affiliate", value: "affiliates" },
-        ],
-      },
+      title: "Profile Type",
+      type: "reference",
+      to: [{ type: "profile_type" }],
       validation: (Rule) => Rule.required(),
     },
     {
@@ -54,5 +47,34 @@ export default {
       title: "Email",
       validation: (Rule) => Rule.required(),
     },
+    {
+      name: "alumni",
+      type: "boolean",
+      title: "Alumni",
+      initialValue: false,
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: "order",
+      type: "number",
+      title: "Order",
+      validation: (Rule) => Rule.required(),
+    },
   ],
+  preview: {
+    select: {
+      title: "title",
+      order: "order",
+      alum: "alumni",
+      image: "image",
+    },
+    prepare(selection) {
+      const { title, order, alum, image } = selection;
+      return {
+        title: title,
+        subtitle: "Display Order: " + order + `${alum ? " - Alumni" : ""}`,
+        media: image,
+      };
+    },
+  },
 };

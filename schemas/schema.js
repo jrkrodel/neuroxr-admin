@@ -8,6 +8,7 @@ import feature from "./documents/feature"; // import the file you just made
 import profile from "./documents/profile";
 import card from "./documents/card";
 import research from "./documents/research";
+import profileType from "./documents/profileType";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -16,6 +17,7 @@ export default createSchema({
     feature, // add the document type to this array
     card,
     profile,
+    profileType,
     research,
   ]),
 });
