@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVideo } from "@fortawesome/free-solid-svg-icons";
-
+import { GrDocumentPdf } from "react-icons/gr";
 const shouldShow = (document) => {
   return document.contentType;
 };
@@ -28,11 +28,22 @@ export default {
           marks: {
             annotations: [
               {
+                name: "link",
+                type: "object",
+                title: "link",
+                fields: [
+                  {
+                    name: "url",
+                    type: "url",
+                  },
+                ],
+              },
+              {
                 name: "internalLink",
                 type: "object",
                 title: "Internal link",
                 blockEditor: {
-                  icon: () => "FILE",
+                  icon: GrDocumentPdf,
                 },
                 fields: [
                   {

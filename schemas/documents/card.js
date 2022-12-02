@@ -1,3 +1,5 @@
+import { GrDocumentPdf } from "react-icons/gr";
+
 export default {
   name: "card",
   type: "document",
@@ -19,11 +21,22 @@ export default {
           marks: {
             annotations: [
               {
+                name: "link",
+                type: "object",
+                title: "link",
+                fields: [
+                  {
+                    name: "url",
+                    type: "url",
+                  },
+                ],
+              },
+              {
                 name: "internalLink",
                 type: "object",
                 title: "Internal link",
                 blockEditor: {
-                  icon: () => "FILE",
+                  icon: GrDocumentPdf,
                 },
                 fields: [
                   {

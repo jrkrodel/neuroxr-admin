@@ -1,3 +1,5 @@
+import { BsFillArrowRightSquareFill } from "react-icons/bs";
+
 export default {
   name: "profile",
   type: "document",
@@ -14,7 +16,41 @@ export default {
       name: "bio",
       type: "array",
       validation: (Rule) => Rule.required(),
-      of: [{ type: "block" }],
+      of: [
+        {
+          type: "block",
+          marks: {
+            annotations: [
+              {
+                name: "link",
+                type: "object",
+                title: "link",
+                fields: [
+                  {
+                    name: "url",
+                    type: "url",
+                  },
+                ],
+              },
+              {
+                name: "profileLink",
+                type: "object",
+                title: "Profile Link",
+                blockEditor: {
+                  icon: BsFillArrowRightSquareFill,
+                },
+                fields: [
+                  {
+                    name: "url",
+                    type: "string",
+                    title: "URL",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      ],
     },
     {
       name: "image",

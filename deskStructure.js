@@ -93,7 +93,7 @@ export default () =>
                     .filter('_type == "profile_type"')
                 ),
               S.listItem()
-                .title("Profiles By Type")
+                .title("Current Profiles By Type")
                 .child(
                   S.documentTypeList("profile_type")
                     .title("Profiles by Type")
@@ -119,7 +119,42 @@ export default () =>
                       S.documentList()
                         .defaultOrdering([{ field: "order", direction: "asc" }])
                         .title("Profiles")
-                        .filter('_type == "profile" && $role == role._ref')
+                        .filter(
+                          '_type == "profile" && $role == role._ref && alumni == false'
+                        )
+                        .params({ role })
+                    )
+                ),
+              S.listItem()
+                .title("Alums By Type")
+                .child(
+                  S.documentTypeList("profile_type")
+                    .title("Profiles by Type")
+                    .menuItems([
+                      S.orderingMenuItem({
+                        title: "Order ascending",
+                        by: [{ field: "order", direction: "asc" }],
+                      }),
+                      S.orderingMenuItem({
+                        title: "Order descending",
+                        by: [{ field: "order", direction: "desc" }],
+                      }),
+                      S.orderingMenuItem({
+                        title: "Title ascending",
+                        by: [{ field: "title", direction: "asc" }],
+                      }),
+                      S.orderingMenuItem({
+                        title: "Title descending",
+                        by: [{ field: "title", direction: "desc" }],
+                      }),
+                    ])
+                    .child((role) =>
+                      S.documentList()
+                        .defaultOrdering([{ field: "order", direction: "asc" }])
+                        .title("Profiles")
+                        .filter(
+                          '_type == "profile" && $role == role._ref && alumni == true'
+                        )
                         .params({ role })
                     )
                 ),
