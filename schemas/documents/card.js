@@ -23,7 +23,7 @@ export default {
               {
                 name: "link",
                 type: "object",
-                title: "link",
+                title: "Link",
                 fields: [
                   {
                     name: "url",
@@ -34,7 +34,7 @@ export default {
               {
                 name: "internalLink",
                 type: "object",
-                title: "Internal link",
+                title: "Internal PDF Link",
                 blockEditor: {
                   icon: GrDocumentPdf,
                 },

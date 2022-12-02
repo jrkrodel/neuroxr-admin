@@ -35,7 +35,7 @@ export default {
               {
                 name: "profileLink",
                 type: "object",
-                title: "Profile Link",
+                title: "Custom Profile Link",
                 blockEditor: {
                   icon: BsFillArrowRightSquareFill,
                 },
