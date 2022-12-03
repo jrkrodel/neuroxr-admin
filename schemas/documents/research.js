@@ -13,10 +13,13 @@ export default {
       title: "File",
       name: "file",
       type: "file",
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "description",
       title: "Description",
+      description:
+        "Description is displayed under title if the research document is featured",
       type: "array",
       of: [{ type: "block" }],
     },

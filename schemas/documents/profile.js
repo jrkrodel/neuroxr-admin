@@ -12,6 +12,19 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      name: "roleTitle",
+      type: "string",
+      title: "Title",
+      description: "A specific title/role displayed above the name in red",
+    },
+    {
+      name: "role",
+      title: "Profile Type",
+      type: "reference",
+      to: [{ type: "profile_type" }],
+      validation: (Rule) => Rule.required(),
+    },
+    {
       title: "Biography",
       name: "bio",
       type: "array",
@@ -29,6 +42,7 @@ export default {
                   {
                     name: "url",
                     type: "url",
+                    validation: (Rule) => Rule.required(),
                   },
                 ],
               },
@@ -44,6 +58,7 @@ export default {
                     name: "url",
                     type: "string",
                     title: "URL",
+                    validation: (Rule) => Rule.required(),
                   },
                 ],
               },
@@ -56,25 +71,15 @@ export default {
       name: "image",
       type: "image",
       title: "Image",
+      options: {
+        hotspot: true, // <-- Defaults to false
+      },
       validation: (Rule) => Rule.required(),
     },
     {
       name: "alt",
       title: "Alt Text",
       type: "string",
-      validation: (Rule) => Rule.required(),
-    },
-    {
-      name: "role",
-      title: "Profile Type",
-      type: "reference",
-      to: [{ type: "profile_type" }],
-      validation: (Rule) => Rule.required(),
-    },
-    {
-      name: "roleTitle",
-      type: "string",
-      title: "Role Title",
       validation: (Rule) => Rule.required(),
     },
     {
@@ -99,15 +104,15 @@ export default {
   ],
   preview: {
     select: {
-      title: "title",
+      title: "name",
       order: "order",
       alum: "alumni",
       image: "image",
     },
     prepare(selection) {
-      const { title, order, alum, image } = selection;
+      const { name, order, alum, image } = selection;
       return {
-        title: title,
+        title: name,
         subtitle: "Display Order: " + order + `${alum ? " - Alumni" : ""}`,
         media: image,
       };

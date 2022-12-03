@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVideo } from "@fortawesome/free-solid-svg-icons";
 import { GrDocumentPdf } from "react-icons/gr";
+
 const shouldShow = (document) => {
   return document.contentType;
 };
@@ -35,6 +36,7 @@ export default {
                   {
                     name: "url",
                     type: "url",
+                    validation: (Rule) => Rule.required(),
                   },
                 ],
               },
@@ -49,10 +51,8 @@ export default {
                   {
                     name: "doc",
                     type: "reference",
-                    to: [
-                      { type: "research_doc" },
-                      // other types you may want to link to
-                    ],
+                    to: [{ type: "research_doc" }],
+                    validation: (Rule) => Rule.required(),
                   },
                 ],
               },
@@ -77,6 +77,9 @@ export default {
       name: "image",
       type: "image",
       title: "Image",
+      options: {
+        hotspot: true, // <-- Defaults to false
+      },
       validation: (rule) =>
         rule.custom((currentValue, { document }) => {
           // in a custom validation rule, check if the field should be shown, and if yes, show an error if the value is not set
@@ -130,21 +133,18 @@ export default {
       },
     },
     {
-      title: "Link Text",
-      name: "link_text",
-      type: "string",
-    },
-    {
       title: "Type of Link",
       name: "link_type",
       type: "string",
       options: {
         list: [
+          { title: "None", value: "none" },
           { title: "External", value: "external" },
           { title: "Internal", value: "internal" },
         ],
       },
-      initialValue: "internal",
+      initialValue: "none",
+      validation: (Rule) => Rule.required(),
     },
     {
       title: "Internal URL",
@@ -162,6 +162,15 @@ export default {
           { title: "Contact Us", value: "#/contact-us" },
         ],
       },
+      validation: (Rule) =>
+        Rule.custom((value, { document }) => {
+          // in a custom validation rule, check if the field should be shown, and if yes, show an error if the value is not set
+          if (document.link_type === "internal" && value === undefined)
+            return "Internal Link Required";
+          // if we are not showing the field, or if the field has a value
+          // then the validation passes
+          return true;
+        }),
     },
     {
       title: "External URL",
@@ -171,6 +180,33 @@ export default {
       validation: (Rule) =>
         Rule.uri({
           scheme: ["http", "https"],
+        }).custom((value, { document }) => {
+          // in a custom validation rule, check if the field should be shown, and if yes, show an error if the value is not set
+          if (document.link_type === "external" && value === undefined)
+            return "External Link Required";
+          // if we are not showing the field, or if the field has a value
+          // then the validation passes
+          return true;
+        }),
+    },
+    {
+      title: "Link Text",
+      name: "link_text",
+      type: "string",
+      hidden: ({ document }) => {
+        return document?.link_type === "none" || !document?.link_type;
+      },
+      validation: (Rule) =>
+        Rule.custom((value, { document }) => {
+          // in a custom validation rule, check if the field should be shown, and if yes, show an error if the value is not set
+          if (
+            (document.link_type !== "none" || !document?.link_type) &&
+            value === undefined
+          )
+            return "Link Text Required";
+          // if we are not showing the field, or if the field has a value
+          // then the validation passes
+          return true;
         }),
     },
     {
