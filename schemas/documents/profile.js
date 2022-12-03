@@ -104,7 +104,7 @@ export default {
   ],
   preview: {
     select: {
-      title: "name",
+      name: "name",
       order: "order",
       alum: "alumni",
       image: "image",
