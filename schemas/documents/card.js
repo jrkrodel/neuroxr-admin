@@ -41,6 +41,7 @@ export default {
                 },
                 fields: [
                   {
+                    title: "Research Document Reference",
                     name: "doc",
                     type: "reference",
                     to: [{ type: "research_doc" }],
@@ -78,6 +79,7 @@ export default {
           { title: "None", value: "none" },
           { title: "External", value: "external" },
           { title: "Internal", value: "internal" },
+          { title: "Research Document", value: "research" },
         ],
       },
       initialValue: "none",
@@ -121,6 +123,22 @@ export default {
           // in a custom validation rule, check if the field should be shown, and if yes, show an error if the value is not set
           if (document.link_type === "external" && value === undefined)
             return "External Link Required";
+          // if we are not showing the field, or if the field has a value
+          // then the validation passes
+          return true;
+        }),
+    },
+    {
+      title: "Research Document Reference",
+      name: "research_doc_ref",
+      type: "reference",
+      to: [{ type: "research_doc" }],
+      hidden: ({ document }) => document?.link_type !== "research",
+      validation: (Rule) =>
+        Rule.custom((value, { document }) => {
+          // in a custom validation rule, check if the field should be shown, and if yes, show an error if the value is not set
+          if (document.link_type === "research" && value === undefined)
+            return "Research Document Reference Required";
           // if we are not showing the field, or if the field has a value
           // then the validation passes
           return true;
