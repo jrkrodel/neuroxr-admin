@@ -9,6 +9,7 @@ export default {
       name: "title",
       type: "string",
       title: "Title",
+      description: "Title of card also serves as the link text if link is set",
       validation: (Rule) => Rule.required(),
     },
     {
