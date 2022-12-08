@@ -1,6 +1,4 @@
-import React from 'react'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faVideo} from '@fortawesome/free-solid-svg-icons'
+import {BsCameraVideo} from 'react-icons/bs'
 import {GrDocumentPdf} from 'react-icons/gr'
 
 const shouldShow = (document) => {
@@ -265,7 +263,7 @@ export default {
         return {
           title: title,
           subtitle: 'Display Order: ' + order,
-          // media: <FontAwesomeIcon icon={faVideo}></FontAwesomeIcon>,
+          media: BsCameraVideo,
         }
       } else {
         return {
