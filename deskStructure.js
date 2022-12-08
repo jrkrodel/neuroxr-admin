@@ -73,14 +73,6 @@ export const structure = (S, context) =>
             .title('Profile Resources')
             .items([
               S.listItem()
-                .title('Profile Types')
-                .child(
-                  S.documentList()
-                    .defaultOrdering([{field: 'order', direction: 'asc'}])
-                    .title('Profile Types')
-                    .filter('_type == "profile_type"')
-                ),
-              S.listItem()
                 .title('Current Profiles By Type')
                 .child(
                   S.documentTypeList('profile_type')
@@ -143,6 +135,14 @@ export const structure = (S, context) =>
                     )
                 ),
             ])
+        ),
+      S.listItem()
+        .title('Profile Types')
+        .child(
+          S.documentList()
+            .defaultOrdering([{field: 'order', direction: 'asc'}])
+            .title('Profile Types')
+            .filter('_type == "profile_type"')
         ),
       S.listItem()
         .title('Research Docs')
