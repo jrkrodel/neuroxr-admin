@@ -3,6 +3,30 @@ export const structure = (S, context) =>
     .title('Content')
     .items([
       S.listItem()
+        .title('Cards')
+        .child(
+          S.list()
+            .title('Cards by Type')
+            .items([
+              S.listItem()
+                .title('Resource/Equipment')
+                .child(
+                  S.documentList()
+                    .defaultOrdering([{field: 'order', direction: 'asc'}])
+                    .title('Resource/Equipment')
+                    .filter('_type == "card" && type == "equipment"')
+                ),
+              S.listItem()
+                .title('Student Roles')
+                .child(
+                  S.documentList()
+                    .defaultOrdering([{field: 'order', direction: 'asc'}])
+                    .title('Student Roles')
+                    .filter('_type == "card" && type == "sRole"')
+                ),
+            ])
+        ),
+      S.listItem()
         .title('Features')
         .child(
           S.list()
@@ -41,38 +65,6 @@ export const structure = (S, context) =>
                     .filter('_type == "feature" && page == "resources-equipment"')
                 ),
             ])
-        ),
-      S.listItem()
-        .title('Cards')
-        .child(
-          S.list()
-            .title('Cards by Type')
-            .items([
-              S.listItem()
-                .title('Resource/Equipment')
-                .child(
-                  S.documentList()
-                    .defaultOrdering([{field: 'order', direction: 'asc'}])
-                    .title('Resource/Equipment')
-                    .filter('_type == "card" && type == "equipment"')
-                ),
-              S.listItem()
-                .title('Student Roles')
-                .child(
-                  S.documentList()
-                    .defaultOrdering([{field: 'order', direction: 'asc'}])
-                    .title('Student Roles')
-                    .filter('_type == "card" && type == "sRole"')
-                ),
-            ])
-        ),
-      S.listItem()
-        .title('Research Docs')
-        .child(
-          S.documentList()
-            .defaultOrdering([{field: 'order', direction: 'asc'}])
-            .title('Research Docs')
-            .filter('_type == "research_doc"')
         ),
       S.listItem()
         .title('Profiles')
@@ -151,6 +143,14 @@ export const structure = (S, context) =>
                     )
                 ),
             ])
+        ),
+      S.listItem()
+        .title('Research Docs')
+        .child(
+          S.documentList()
+            .defaultOrdering([{field: 'order', direction: 'asc'}])
+            .title('Research Docs')
+            .filter('_type == "research_doc"')
         ),
 
       // The rest of this document is from the original manual grouping in this series of articles
