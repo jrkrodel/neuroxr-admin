@@ -152,13 +152,13 @@ export default {
       hidden: ({document}) => document?.link_type !== 'internal',
       options: {
         list: [
-          {title: 'Home', value: '#/home'},
-          {title: 'About', value: '#/about'},
-          {title: 'Our Research', value: '#/our-research'},
-          {title: 'Resources & Equipment', value: '#/resources-equipment'},
-          {title: 'Get Involved', value: '#/get-involved'},
-          {title: 'Our Team', value: '#/our-team'},
-          {title: 'Contact Us', value: '#/contact-us'},
+          {title: 'Home', value: '#home'},
+          {title: 'About', value: '#about'},
+          {title: 'Our Research', value: '#our-research'},
+          {title: 'Resources & Equipment', value: '#resources-equipment'},
+          {title: 'Get Involved', value: '#get-involved'},
+          {title: 'Our Team', value: '#our-team'},
+          {title: 'Contact Us', value: '#contact-us'},
         ],
       },
       validation: (Rule) =>
