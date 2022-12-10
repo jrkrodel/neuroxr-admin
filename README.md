@@ -1,8 +1,9 @@
-# Sanity Clean Content Studio
+## NeuroXR Sanity Studio
 
-Congratulations, you have now installed the Sanity Content Studio, an open source real-time content editing environment connected to the Sanity backend.
+Studio: https://neuroxr.sanity.studio/desk (Need access to be able to view)
+Organization: https://www.sanity.io/organizations/oCaTP3OUj
 
-Now you can do the following things:
+## Other useful links:
 
 - [Read “getting started” in the docs](https://www.sanity.io/docs/introduction/getting-started?utm_source=readme)
 - [Join the community Slack](https://slack.sanity.io/?utm_source=readme)
