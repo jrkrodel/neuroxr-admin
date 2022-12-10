@@ -1,5 +1,7 @@
 ## NeuroXR Sanity Studio
 
+Note, for future editors/developers: you will need to run `npm install` to install the needed packages.
+
 Studio: https://neuroxr.sanity.studio/desk (Need access to be able to view)
 
 Organization: https://www.sanity.io/organizations/oCaTP3OUj
