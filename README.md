@@ -1,6 +1,6 @@
 ## NeuroXR Sanity Studio
 
-Note, for future editors/developers: you will need to run `npm install` to install the needed packages.
+Note, for future editors/developers: you will need to run `npm install` to install the needed packages. Also install [Sanity CLI](https://www.sanity.io/docs/getting-started-with-sanity-cli)
 
 Studio: https://neuroxr.sanity.studio/desk (Need access to be able to view)
 
